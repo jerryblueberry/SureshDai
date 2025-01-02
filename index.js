@@ -27,7 +27,11 @@ app.get('/', (req, res) => {
     // res.send('Welcome to my Server');
     res.status(200).json(`Welcome to my Server ${PORT} ${CONNECTION}`);
   });
-app.listen(PORT,() => {
-    console.log(`Server Running on port ${PORT},`);
-    connectDB();
-});
+// Connect to database and start the server
+connectDB().then(() => {
+    app.listen(PORT, () => {
+      console.log(`Server running on port ${PORT}`);
+    });
+  }).catch(error => {
+    console.error("Database connection error:", error.message);
+  });

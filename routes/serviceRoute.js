@@ -1,8 +1,8 @@
 const express = require('express');
-const { addServices } = require('../controller/ServiceController/serviceController');
+const { addServices, getData } = require('../controller/ServiceController/serviceController');
 const router = express.Router();
 // Later add validation
 
 router.post('/add',addServices);
-
+router.get('/',getData)
 module.exports = router;

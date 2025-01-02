@@ -18,4 +18,14 @@ const addServices = asyncHandler(async(req,res) => {
     }
 })
 
-module.exports = {addServices};
+
+//  Get Dummy
+
+const getData  = asyncHandler(async(req,res) => {
+    try {
+        res.status(200).json({message:"Working"});
+    } catch (error) {
+        res.status(500).json({message:"Error Occurred"})
+    }
+})
+module.exports = {addServices,getData};
