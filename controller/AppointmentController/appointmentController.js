@@ -73,13 +73,13 @@ const addAppointment = asyncHandler(async (req, res) => {
         });
 
         await appointment.save();
-        
+        await sendBookingConfirmation(email, appointment.referenceId, name, timeSlot, date, service.name);
         // Send success response
         res.status(200).json({
             message: "Appointment booked successfully,We've sent you a E-mail for booking detail",
             referenceId: appointment.referenceId,
         });
-        await sendBookingConfirmation(email, appointment.referenceId, name, timeSlot, date, service.name);
+        
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
