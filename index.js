@@ -17,6 +17,7 @@ app.use(cors({
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 const PORT = process.env.PORT 
+const CONNECTION = process.env.CONNECTION
 
 
 app.use('/appointment',Appointment);
@@ -24,7 +25,7 @@ app.use('/services',Service)
 
 app.get('/', (req, res) => {
     // res.send('Welcome to my Server');
-    res.status(200).json(`Welcome to my Server ${PORT}`);
+    res.status(200).json(`Welcome to my Server ${PORT} ${CONNECTION}`);
   });
 app.listen(PORT,() => {
     console.log(`Server Running on port ${PORT},`);
