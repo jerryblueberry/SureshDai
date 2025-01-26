@@ -23,7 +23,8 @@ const addServices = asyncHandler(async(req,res) => {
 
 const getData  = asyncHandler(async(req,res) => {
     try {
-        res.status(200).json({message:"Working"});
+        const services  = await Service.find();
+        res.status(200).json(services);
     } catch (error) {
         res.status(500).json({message:"Error Occurred"})
     }
